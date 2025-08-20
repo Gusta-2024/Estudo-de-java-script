@@ -1,8 +1,2 @@
-import funcoes from './funcoes-auxiliares';
+const {gets, print } = require('./funcoes-auxiliares');
 
-	print(gets());
-	print(gets());
-	print(gets());
-	print(gets());
-	print(gets());
-	print(gets());
