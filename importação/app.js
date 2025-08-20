@@ -1,4 +1,4 @@
-const funcoes = require('./prog2.js');
+import funcoes from './funcoes-auxiliares';
 
 	print(gets());
 	print(gets());
