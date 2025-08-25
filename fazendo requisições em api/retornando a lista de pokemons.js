@@ -2,7 +2,7 @@ const offset = 0;
 const limit = 10;
 const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
 
-function convvertPokemonToLi(pokemon) {
+export function convvertPokemonToLi(pokemon) {
   //forma de exibir a lista de pokemons no html sem poluir o html
   return `
         <li class="pokemon">
@@ -22,16 +22,6 @@ function convvertPokemonToLi(pokemon) {
     `;
 }
 
-const pokemonList = document.getElementsById("pokemonList");
+export const pokemonList = document.getElementsById("pokemonList");
 
-fetch(url) //Essa é uma forma de fazer um encadeamento de thens uma forma de escrever muito codigo em poucas linhas
-  .then((response) => response.json())
-  .then((jsonBody) => jsonBody.results)
-  .then((pokemons) => {
-    for (let i = 0; i < pokemons.length; i++) {
-        const pokemons = pokemons[i];
-        pokemonList.innerHTML += convvertPokemonToLi(pokemon);
-        //Essa e a forma mais sesmantica de requisitar os pokemons em lista definindo um id na lista ol na section pokemons no HTML.
-    }
-  })
-  .catch((erro) => console.error(error));
+
