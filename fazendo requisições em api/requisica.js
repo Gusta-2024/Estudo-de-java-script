@@ -26,3 +26,4 @@ fetch(url) //Essa é uma forma de fazer um encadeamento de thens uma forma de es
     .then((response) => response.json())  
     .then((jsonBody) => console.log(jsonBody))
     .catch((erro) => console.error(error))
+    
