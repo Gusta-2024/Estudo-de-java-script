@@ -1,21 +1,18 @@
-const offset = 0;
-const limit = 10;
-const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
+function convertPokemonTypesToLi(pokemonTypes){
+    return pokemonTypes.mao((typeSlot) => `<li class="type>"${typeSlot.type.name}</li>`)
+}
 
 export function convvertPokemonToLi(pokemon) {
-  //forma de exibir a lista de pokemons no html sem poluir o html
   return `
         <li class="pokemon">
-            <span class="number">#001</span>
+            <span class="number">#${pokemon.order}</span>
             <span class="name">${pokemon.name}</span>
 
             <div class="detail">
                 <ol class="types">
-                    <li class="type">
-                    <li class="type">
-                <ol/>
-                
-                <img src="https://raw.girhubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+                    ${convertPokemonTypesToLi(pokemon.types).join('')}
+                <ol/>              
+                <img src="${pokemon.sprites.other.dream_world.front_default}"
                     alt="${pokemon.name}">
             </div>        
         </li>
@@ -24,4 +21,8 @@ export function convvertPokemonToLi(pokemon) {
 
 export const pokemonList = document.getElementsById("pokemonList");
 
+pokeApi.getPokemons().then((pokemons = []) => {
+    const newHtml = pokemons.map(convvertPokemonToLi).join('')
+    pokemonList.innerHTML= newHtml
+})
 
