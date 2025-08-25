@@ -1,14 +1,16 @@
-const { pokemonList, convvertPokemonToLi } = require("./retornando a lista de pokemons");
+const {
+  pokemonList,
+  convvertPokemonToLi,
+} = require("./retornando a lista de pokemons");
 
-
-const offset = 0
-const limit = 10
+const offset = 0;
+const limit = 10;
 const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
 
 // //fetch(url) {/*essa e uma das maneiras de fazer requisições apis*/
 //   .then(function(response){
 //      return response.json()
-//     })        
+//     })
 //   .then(function (response){
 //      console.log(response)
 //     })
@@ -22,20 +24,17 @@ const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
 // .finally(function(){
 //        console.log('Requisição concluida')
 //    });
-   
+
 /*/*
 fetch(url) //Essa é uma forma de fazer um encadeamento de thens uma forma de escrever muito codigo em poucas linhas 
     .then((response) => response.json())  
     .then((jsonBody) => console.log(jsonBody))
        catch((erro) => console.error(error));
-/**/*/
-    
-pokeApi.getPokemons() .then(pokemons) => { //adptação do formato apos criação e função externa de controle
-        for (let i = 0; i < pokemons.length; i++) {
-            const pokemons = pokemons[i];
-            pokemonList.innerHTML += convvertPokemonToLi(pokemon);
-            //Essa e a forma mais sesmantica de requisitar os pokemons em lista definindo um id na lista ol na section pokemons no HTML.
-        }
-    }
-    
-    
+/**/
+
+//Os pokemons foram mapeados e convertido em uma listya de li</br>
+//  E deposi foi juntado todos os pokemons em um li sem separador</br>
+//  iIsso vai virar um novo html e sera concatenado no antigo.</br>
+pokeApi.getPokemons().then((pokemons = []) => {
+  pokemonList.innerHTML += pokemons.map(convvertPokemonToLi).join("");
+});
